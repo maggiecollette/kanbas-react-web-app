@@ -1,0 +1,30 @@
+.wd-dashboard-title {
+    color: #6c757d;
+}
+.wd-course-card {
+    width: 325px;
+}
+.wd-course-navigation {
+    text-decoration: none;
+}
+.wd-course-title {
+    color: blue;
+    font-weight: bold;
+    margin: 0px;
+}
+.wd-course-subtitle {
+    color: #6c757d;
+    font-size: 16px;
+    margin: 4px 0px 0px;
+}
+.wd-course-text {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 0px 0px 4px;
+}
+.wd-course-img {
+    max-height: 180px;
+}
+.wd-course-icon {
+    color: #6c757d;
+}
