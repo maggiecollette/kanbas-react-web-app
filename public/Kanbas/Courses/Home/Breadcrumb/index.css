@@ -1,0 +1,13 @@
+.wd-breadcrumb {
+    font-size: 25px;
+    padding: 5px;
+}
+
+.wd-breadcrumb a {
+    text-decoration: none;
+    color: red;
+}
+
+.wd-breadcrumb button {
+    font-size: 15px;
+}
