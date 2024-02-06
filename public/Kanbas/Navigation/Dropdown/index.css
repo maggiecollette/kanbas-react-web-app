@@ -1,0 +1,30 @@
+.wd-kanbas-navigation {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+.wd-kanbas-navigation li {
+    padding: 10px;
+    font-size: 0.8em;
+}
+.wd-kanbas-navigation a {
+    color: red;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+.wd-kanbas-navigation a i {
+    color: red;
+    font-size: 2em;
+    margin: 5px;
+}
+.wd-kanbas-navigation span {
+    color: red;
+    font-size: 1em;
+    margin: 5px;
+    padding-top: 5px;
+}
+.wd-kanbas-profile {
+    color: grey !important;
+}
