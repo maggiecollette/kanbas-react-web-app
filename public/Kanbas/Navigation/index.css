@@ -33,3 +33,7 @@
 .wd-kanbas-profile {
     color: white !important;
 }
+
+.wd-kanbas-navigation li.wd-active i.wd-kanbas-profile {
+    color: grey !important;
+}
