@@ -1,0 +1,17 @@
+.wd-navigation {
+    background-color: white;
+    list-style: none;
+    padding: 0px;
+    margin: 5px;
+}
+.wd-navigation li {
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wd-navigation a {
+    color: red;
+    text-decoration: none;
+}
