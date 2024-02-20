@@ -4,33 +4,28 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Account from "./Account";
 import Courses from "./Courses";
-import Calendar from "./Calendar";
-import Inbox from "./Inbox";
-import History from "./History";
-import Studio from "./Studio";
-import Commons from "./Commons";
-import Help from "./Help";
 
 function Kanbas() {
-    return (
-        <div className="d-flex">
-            <div>
-                <KanbasNavigation />
-            </div>
-            <div style={{ flexGrow: 1 }}>
-                <Routes>
-                    <Route path="/" element={<Navigate to="Dashboard" />} />
-                    <Route path="Account" element={<Account />} />
-                    <Route path="Dashboard" element={<Dashboard />} />
-                    <Route path="Courses/:courseId/*" element={<Courses />} />
-                    <Route path="Calendar/*" element={<Calendar />} />
-                    <Route path="Inbox/*" element={<Inbox />} />
-                    <Route path="History/*" element={<History />} />
-                    <Route path="Studio/*" element={<Studio />} />
-                    <Route path="Commons/*" element={<Commons />} />
-                    <Route path="Help/*" element={<Help />} />
-                </Routes>
-            </div>
-        </div>
-    );}
+	return (
+		<div className="d-flex">
+			<div>
+				<KanbasNavigation />
+			</div>
+			<div style={{ flexGrow: 1 }}>
+				<Routes>
+					<Route path="/" element={<Navigate to="Dashboard" />} />
+					<Route path="Account" element={<Account />} />
+					<Route path="Dashboard" element={<Dashboard />} />
+					<Route path="Courses/:courseId/*" element={<Courses />} />
+					<Route path="Calendar/*" element={<h1>Calendar</h1>} />
+					<Route path="Inbox/*" element={<h1>Inbox</h1>} />
+					<Route path="History/*" element={<h1>History</h1>} />
+					<Route path="Studio/*" element={<h1>Studio</h1>} />
+					<Route path="Commons/*" element={<h1>Commons</h1>} />
+					<Route path="Help/*" element={<h1>Help</h1>} />
+				</Routes>
+			</div>
+		</div>
+	);
+}
 export default Kanbas;

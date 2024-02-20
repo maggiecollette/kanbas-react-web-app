@@ -1,0 +1,49 @@
+.wd-home-buttons button, dropdown.wd-dropdown{
+    padding: 5px;
+    margin: 2px;
+    border-radius: 0%;
+    border-color: grey;
+}
+.wd-modules,
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+}
+
+.wd-modules {
+    margin: 5px;
+}
+
+.wd-modules > li {
+    background-color: lightgray;
+    border: 1px solid gray !important;
+    border-left: none !important;
+    margin-bottom: 20px;
+}
+
+.wd-modules > li > div {
+    padding: 6px;
+    border-left: 1px solid gray !important;
+}
+
+.wd-modules > li > ul > li {
+    padding: 5px;
+    border-top: 1px solid gray !important;
+    border-left: 5px solid green;
+}
+
+.wd-modules > li > ul > li > ul > li {
+    border-top: 1px solid gray !important;
+}
+
+.wd-module-list-item {
+    padding-left: 20px;
+}
+
+.wd-anchor {
+    text-decoration: none;
+    color: red;
+}

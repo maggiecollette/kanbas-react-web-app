@@ -1,0 +1,65 @@
+.wd-courses-sidebar {
+    width: 250px;
+    padding-left: 20px;
+}
+
+.list-group.wd-course-status a {
+    text-decoration: none;
+    color: black;
+}
+
+.list-group.wd-course-status li {
+    background-color: lightgray;
+    border-radius: 0%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+.wd-courses-sidebar-links {
+    list-style-type: none;
+}
+
+.wd-courses-sidebar-links li:before {
+    font-family: 'FontAwesome';
+    color: red;
+}
+
+.wd-courses-sidebar-links ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.wd-courses-sidebar-links li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.wd-courses-sidebar-links li > a, .wd-more-link {
+    color: red;
+    text-decoration: none;
+    font-size: 13px;
+    text-indent: -20px;
+}
+
+.wd-courses-sidebar-links li > a > p {
+    color: grey;
+    font-size: 11px;
+    padding-left: 2em;
+    margin: 0px;
+    text-indent: -1em;
+}
+
+.wd-coming-up-content li:before {
+    content: "\f133";
+}
+
+.wd-to-do-content li:before {
+    content: "\f06a";
+}
+
+.wd-anchor {
+    text-decoration: none;
+    color: red;
+}
