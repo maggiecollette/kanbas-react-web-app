@@ -6,15 +6,12 @@ import {
 	FaPlusCircle,
 	FaPlus,
 } from "react-icons/fa";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import "./index.css";
 function ModuleList() {
 	const { courseId } = useParams();
 	const modulesList = modules.filter((module) => module.course === courseId);
 	const [selectedModule, setSelectedModule] = useState(modulesList[0]);
-	const [selectedLesson, setSelectedLesson] = useState(
-		selectedModule.lessons[0]
-	);
 	return (
 		<div className="flex-fill">
 			<span className="d-flex justify-content-end wd-home-buttons">

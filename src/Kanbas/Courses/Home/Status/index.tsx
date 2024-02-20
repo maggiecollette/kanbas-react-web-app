@@ -94,7 +94,7 @@ function Status() {
 			</button>
 			<ul className="list-group wd-course-status">
 				{buttons.map((button, index) => (
-					<li className="list-group-item">
+					<li key={index} className="list-group-item">
 						<Link to={button.to}>
 							{button.icon}
 							{button.name}
@@ -106,7 +106,7 @@ function Status() {
 			<hr />
 			<ul className="wd-courses-sidebar-links wd-to-do-content">
 				{toDo.map((toDo, index) => (
-					<li>
+					<li key={index}>
 						<span className="float-end">
 							<FaXmark style={{ margin: 5 }} />
 						</span>

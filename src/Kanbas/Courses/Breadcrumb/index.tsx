@@ -30,7 +30,10 @@ function Breadcrumb() {
 									</Link>
 								</li>
 								{pageNames.map((name, index) => (
-									<li className="breadcrumb-item" aria-current="page">
+									<li
+										key={index}
+										className="breadcrumb-item"
+										aria-current="page">
 										{pageNames.length !== index + 1 ? (
 											<Link
 												to={`${pathname.split(`/${pageNames[index + 1]}`)[0]}`}

@@ -1,54 +1,64 @@
 import { useLocation, useParams } from "react-router";
-import CourseNavigation from "..";
 import { FaAngleDown, FaBars } from "react-icons/fa";
-import KanbasNavigationDropdown from "./kanbas";
-import CoursesNavigationDropdown from "./courses";
+import KanbasNavigationDropdown from "./KanbasDropdown";
+import CoursesNavigationDropdown from "./CoursesDropdown";
 function Dropdown() {
 	const { pathname } = useLocation();
 	const { courseId } = useParams();
-	const pageName = pathname.split(courseId + "/")[1].replace("%20", " ");
+	const pageName = pathname.includes("Courses")
+		? pathname.split("Kanbas/Courses/")[1].split("/")
+		: pathname.split("/Kanbas/");
 	return (
 		<div className="d-block d-md-none">
 			<nav className="navbar navbar-dark bg-dark wd-navbar">
 				<div className="container-fluid position-relative">
 					<span>
-						<div>
-							<button
-								className="btn"
-								type="button"
-								data-toggle="collapse"
-								data-target="#kanbas"
-								aria-expanded="false"
-								aria-controls="kanbas">
-								<FaBars style={{ color: "grey" }} />
-							</button>
-							<div className="collapse" id="kanbas">
-								<KanbasNavigationDropdown />
+						<button
+							className="btn"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#kanbas"
+							aria-expanded="false"
+							aria-controls="kanbas">
+							<FaBars style={{ color: "grey" }} />
+						</button>
+					</span>
+					<span className="mx-auto text-center">
+						{pageName.map((label, index) => (
+							<h5 key={index} className="text-light">
+								{label}
+							</h5>
+						))}
+					</span>
+					{pathname.includes("Courses") ? (
+						<span className="float-end">
+							<div>
+								<button
+									className="btn"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#courses"
+									aria-expanded="false"
+									aria-controls="courses">
+									<FaAngleDown style={{ color: "grey" }} />
+								</button>
 							</div>
-						</div>
-					</span>
-					<span className="text-center">
-						<h5 className="text-light">{courseId}</h5>
-						<h5 className="text-light">{pageName}</h5>
-					</span>
-					<span className="float-end">
-						<div>
-							<button
-								className="btn"
-								type="button"
-								data-toggle="collapse"
-								data-target="#courses"
-								aria-expanded="false"
-								aria-controls="courses">
-								<FaAngleDown style={{ color: "grey" }} />
-							</button>
-							<div className="collapse" id="courses">
-								<CoursesNavigationDropdown />
-							</div>
-						</div>
-					</span>
+						</span>
+					) : (
+						<></>
+					)}
 				</div>
 			</nav>
+			<div className="collapse collapse-horizontal" id="kanbas">
+				<KanbasNavigationDropdown />
+			</div>
+			{pathname.includes("Courses") ? (
+				<div className="collapse" id="courses">
+					<CoursesNavigationDropdown />
+				</div>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 }
