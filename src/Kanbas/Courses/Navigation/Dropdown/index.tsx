@@ -5,7 +5,7 @@ import CoursesNavigationDropdown from "./CoursesDropdown";
 function Dropdown() {
 	const { pathname } = useLocation();
 	const { courseId } = useParams();
-	const pageName = pathname.includes("Courses")
+	const pageName = /Courses\/.*/.test(pathname)
 		? pathname.split("Kanbas/Courses/")[1].split("/")
 		: pathname.split("/Kanbas/");
 	return (
@@ -30,7 +30,7 @@ function Dropdown() {
 							</h5>
 						))}
 					</span>
-					{pathname.includes("Courses") ? (
+					{/Courses\/.*/.test(pathname) ? (
 						<span className="float-end">
 							<div>
 								<button
@@ -52,7 +52,7 @@ function Dropdown() {
 			<div className="collapse collapse-horizontal" id="kanbas">
 				<KanbasNavigationDropdown />
 			</div>
-			{pathname.includes("Courses") ? (
+			{/Courses\/.*/.test(pathname) ? (
 				<div className="collapse" id="courses">
 					<CoursesNavigationDropdown />
 				</div>
