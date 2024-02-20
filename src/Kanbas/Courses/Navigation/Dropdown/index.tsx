@@ -26,7 +26,7 @@ function Dropdown() {
 					<span className="mx-auto text-center">
 						{pageName.map((label, index) => (
 							<h5 key={index} className="text-light">
-								{label}
+								{label.replace("%20", " ")}
 							</h5>
 						))}
 					</span>
