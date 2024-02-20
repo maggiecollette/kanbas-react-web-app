@@ -4,9 +4,14 @@
     --bs-breadcrumb-divider: '>';
 }
 
-.wd-breadcrumb a {
+.wd-breadcrumb-back {
     text-decoration: none;
     color: red;
+}
+
+.wd-breadcrumb-here {
+    text-decoration: none;
+    color: black;
 }
 
 .wd-breadcrumb button {
