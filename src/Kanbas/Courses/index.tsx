@@ -7,7 +7,18 @@ import Modules from "./Modules/list";
 import Home from "./Home";
 import Dropdown from "./Navigation/Dropdown";
 import Assignments from "./Assignments";
-function Courses() {
+function Courses({
+	courses,
+}: {
+	courses: {
+		_id: string;
+		name: string;
+		number: string;
+		startDate: string;
+		endDate: string;
+		image: string;
+	}[];
+}) {
 	const { courseId } = useParams();
 	const course = courses.find((course) => course._id === courseId);
 	return (

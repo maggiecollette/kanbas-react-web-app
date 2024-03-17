@@ -3,49 +3,65 @@ import { Link } from "react-router-dom";
 import { courses } from "../Database";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
-function Dashboard() {
-	const [coursesState, setCourses] = useState(courses);
-
-	const [defaultCourse, setDefaultCourse] = useState({
-		_id: "0",
-		name: "New Course",
-		number: "New Number",
-		startDate: "2023-09-10",
-		endDate: "2023-12-15",
-		image: "./images/card_photo_1.JPG",
-	});
-
-	const [showNew, setShowNew] = useState(false);
-
-	const [showEdit, setShowEdit] = useState(false);
-
-	const addNewCourse = () => {
-		const newCourse = {
-			...defaultCourse,
-			_id: new Date().getTime().toString(),
-		};
-		console.log(newCourse);
-		setCourses([...coursesState, newCourse]);
-		setShowNew(false);
+function Dashboard({
+	coursesState,
+	setCourses,
+	defaultCourse,
+	setDefaultCourse,
+	showNew,
+	setShowNew,
+	showEdit,
+	setShowEdit,
+	addNewCourse,
+	deleteCourse,
+	updateCourse,
+}: {
+	coursesState: {
+		_id: string;
+		name: string;
+		number: string;
+		startDate: string;
+		endDate: string;
+		image: string;
+	}[];
+	setCourses: React.Dispatch<
+		React.SetStateAction<
+			{
+				_id: string;
+				name: string;
+				number: string;
+				startDate: string;
+				endDate: string;
+				image: string;
+			}[]
+		>
+	>;
+	defaultCourse: {
+		_id: string;
+		name: string;
+		number: string;
+		startDate: string;
+		endDate: string;
+		image: string;
 	};
-
-	const deleteCourse = (courseId: string) => {
-		setCourses(coursesState.filter((course) => course._id !== courseId));
-	};
-
-	const updateCourse = () => {
-		setCourses(
-			coursesState.map((c) => {
-				if (c._id === defaultCourse._id) {
-					return defaultCourse;
-				} else {
-					return c;
-				}
-			})
-		);
-		setShowEdit(false);
-	};
-
+	setDefaultCourse: React.Dispatch<
+		React.SetStateAction<{
+			_id: string;
+			name: string;
+			number: string;
+			startDate: string;
+			endDate: string;
+			image: string;
+		}>
+	>;
+	showNew: boolean;
+	setShowNew: React.Dispatch<React.SetStateAction<boolean>>;
+	showEdit: boolean;
+	setShowEdit: React.Dispatch<React.SetStateAction<boolean>>;
+	addNewCourse: () => void;
+	deleteCourse: (courseId: string) => void;
+	updateCourse: () => void;
+}) {
 	return (
 		<div className="flex-fill p-4">
 			<h1 style={{ color: "#6c757d" }}>Dashboard</h1>
@@ -57,7 +73,7 @@ function Dashboard() {
 						Add Course +
 					</button>
 				</span>
-				<h2>Published Courses (12)</h2>
+				<h2>Published Courses ({coursesState.length})</h2>
 				<hr />
 				<div className="row g-4">
 					{coursesState.map((course) => (
