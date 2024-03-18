@@ -10,7 +10,16 @@ import { useParams } from "react-router-dom";
 import "./index.css";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
-import { addModule, deleteModule, updateModule, setModule } from "./reducer";
+import {
+	addModule,
+	deleteModule,
+	updateModule,
+	setModule,
+	deleteLesson,
+	addLesson,
+	updateLesson,
+	setLesson,
+} from "./reducer";
 import { KanbasState } from "../../store";
 function ModuleList() {
 	const { courseId } = useParams();
@@ -20,10 +29,15 @@ function ModuleList() {
 	const module = useSelector(
 		(state: KanbasState) => state.modulesReducer.module
 	);
+	const lesson = useSelector(
+		(state: KanbasState) => state.modulesReducer.lesson
+	);
 	const dispatch = useDispatch();
 	const [selectedModule, setSelectedModule] = useState(moduleList[0]);
 	const [showNewModule, setShowNewModule] = useState(false);
 	const [showModuleEdit, setShowModuleEdit] = useState(false);
+	const [showNewLesson, setShowNewLesson] = useState(false);
+	const [showLessonEdit, setShowLessonEdit] = useState(false);
 
 	return (
 		<div className="flex-fill">
@@ -92,9 +106,9 @@ function ModuleList() {
 											aria-labelledby="module-dropdown">
 											<li>
 												<button
-													className="dropdown-item"
+													className="dropdown-item text-danger"
 													onClick={() => dispatch(deleteModule(module._id))}>
-													<FaRegTrashAlt className="text-danger" />
+													Delete <FaRegTrashAlt />
 												</button>
 												<button
 													className="dropdown-item"
@@ -103,7 +117,16 @@ function ModuleList() {
 														dispatch(setModule(module));
 														setShowModuleEdit(true);
 													}}>
-													<FaRegPenToSquare />
+													Edit <FaRegPenToSquare />
+												</button>
+												<button
+													className="dropdown-item"
+													onClick={(event) => {
+														event.preventDefault();
+														dispatch(setModule(module));
+														setShowNewLesson(true);
+													}}>
+													New Lesson <FaPlus />
 												</button>
 											</li>
 										</ul>
@@ -118,7 +141,37 @@ function ModuleList() {
 											{lesson.name}
 											<span className="float-end">
 												<FaCheckCircle className="text-success" />
-												<FaEllipsisV />
+												<span className="dropdown">
+													<button
+														className="bg-transparent"
+														id="lesson-dropdown"
+														type="button"
+														data-bs-toggle="dropdown"
+														aria-expanded="false">
+														<FaEllipsisV className="ms-2" />
+													</button>
+													<ul
+														className="dropdown-menu"
+														aria-labelledby="lesson-dropdown">
+														<li>
+															<button
+																className="dropdown-item text-danger"
+																onClick={() => dispatch(deleteLesson(lesson))}>
+																Delete <FaRegTrashAlt />
+															</button>
+															<button
+																className="dropdown-item"
+																onClick={(event) => {
+																	event.preventDefault();
+																	dispatch(setModule(module));
+																	dispatch(setLesson(lesson));
+																	setShowLessonEdit(true);
+																}}>
+																Edit <FaRegPenToSquare />
+															</button>
+														</li>
+													</ul>
+												</span>
 											</span>
 										</li>
 									))}
@@ -130,6 +183,7 @@ function ModuleList() {
 
 			{showNewModule && (
 				<div className="bg-light border border-dark rounded p-3 position-fixed top-50 start-50 translate-middle">
+					<h2>Create Module</h2>
 					<input
 						placeholder={"New Module Name"}
 						className="form-control"
@@ -149,6 +203,7 @@ function ModuleList() {
 						onClick={() => {
 							dispatch(addModule({ ...module, course: courseId }));
 							setShowNewModule(false);
+							setModule(module);
 						}}>
 						Add
 					</button>
@@ -161,6 +216,7 @@ function ModuleList() {
 			)}
 			{showModuleEdit && (
 				<div className="w-50 bg-light border border-dark rounded p-3 position-fixed top-50 start-50 translate-middle">
+					<h2>Edit Module</h2>
 					<input
 						value={module.name}
 						className="form-control"
@@ -186,6 +242,71 @@ function ModuleList() {
 					<button
 						className="btn btn-danger"
 						onClick={() => setShowModuleEdit(false)}>
+						Cancel
+					</button>
+				</div>
+			)}
+
+			{showNewLesson && (
+				<div className="bg-light border border-dark rounded p-3 position-fixed top-50 start-50 translate-middle">
+					<h2>Create Lesson</h2>
+					<input
+						placeholder={"New Lesson Name"}
+						className="form-control"
+						onChange={(e) =>
+							dispatch(setLesson({ ...lesson, name: e.target.value }))
+						}
+					/>
+					<textarea
+						placeholder={"Description"}
+						className="form-control"
+						onChange={(e) =>
+							dispatch(setLesson({ ...lesson, description: e.target.value }))
+						}
+					/>
+					<button
+						className="btn btn-success"
+						onClick={() => {
+							dispatch(addLesson({ ...lesson, module: module._id }));
+							setShowNewLesson(false);
+						}}>
+						Add
+					</button>
+					<button
+						className="btn btn-danger"
+						onClick={() => setShowNewLesson(false)}>
+						Cancel
+					</button>
+				</div>
+			)}
+			{showLessonEdit && (
+				<div className="w-50 bg-light border border-dark rounded p-3 position-fixed top-50 start-50 translate-middle">
+					<h2>Edit Lesson</h2>
+					<input
+						value={lesson.name}
+						className="form-control"
+						onChange={(e) =>
+							dispatch(setLesson({ ...lesson, name: e.target.value }))
+						}
+					/>
+					<textarea
+						value={lesson.description}
+						className="form-control"
+						onChange={(e) =>
+							dispatch(setLesson({ ...lesson, description: e.target.value }))
+						}
+					/>
+					<button
+						className="btn btn-success"
+						onClick={() => {
+							dispatch(updateLesson(lesson));
+							setShowLessonEdit(false);
+						}}>
+						Update
+					</button>
+					<button
+						className="btn btn-danger"
+						onClick={() => setShowLessonEdit(false)}>
 						Cancel
 					</button>
 				</div>

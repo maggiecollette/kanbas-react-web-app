@@ -4,6 +4,7 @@ export interface KanbasState {
   modulesReducer: {
     modules: any[];
     module: any;
+    lesson: any;
   };
 }
 const store = configureStore({
