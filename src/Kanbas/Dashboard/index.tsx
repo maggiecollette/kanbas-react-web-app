@@ -172,13 +172,6 @@ function Dashboard({
 								})
 							}
 						/>
-						<input
-							className="form-control"
-							type="file"
-							onChange={(e) =>
-								setDefaultCourse({ ...defaultCourse, image: e.target.value })
-							}
-						/>
 						<button className="btn btn-success" onClick={updateCourse}>
 							Update
 						</button>
