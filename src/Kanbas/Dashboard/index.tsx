@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { courses } from "../Database";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 function Dashboard({
 	coursesState,
-	setCourses,
 	defaultCourse,
 	setDefaultCourse,
 	showNew,
